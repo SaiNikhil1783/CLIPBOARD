@@ -31,9 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const d = Math.floor(seconds / 86400);
         const h = Math.floor((seconds % 86400) / 3600);
         const m = Math.floor((seconds % 3600) / 60);
+<<<<<<< HEAD
         if (d > 0) return `${d}d ${h}h remaining`;
         if (h > 0) return `${h}h ${m}m remaining`;
         return `${m}m remaining`;
+=======
+        if (d > 0) return ${d}d ${h}h remaining;
+        if (h > 0) return ${h}h ${m}m remaining;
+        return ${m}m remaining;
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
     }
 
     function buildMetaBar(accessCount, expiryRemaining, oneTime) {
@@ -77,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function getFileIcon(filename) {
         const ext = filename.split('.').pop().toLowerCase();
         const icons = {
+<<<<<<< HEAD
             pdf: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>`,
             mp4: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>`,
             mov: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/></svg>`,
@@ -90,6 +97,21 @@ document.addEventListener('DOMContentLoaded', () => {
             webp: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>`,
         };
         return icons[ext] || `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>`;
+=======
+            pdf: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>,
+            mp4: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>,
+            mov: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/></svg>,
+            doc: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>,
+            docx: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>,
+            txt: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>,
+            jpg: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>,
+            jpeg: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>,
+            png: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>,
+            gif: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>,
+            webp: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>,
+        };
+        return icons[ext] || <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>;
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
     }
 
     function formatBytes(bytes) {
@@ -311,7 +333,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const ext = file.name.split('.').pop().toLowerCase();
 
         if (BLOCKED_EXT_CLIENT.includes(ext)) {
+<<<<<<< HEAD
             showInlineError(shareFileError, `File type .${ext} is not allowed.`);
+=======
+            showInlineError(shareFileError, File type .${ext} is not allowed.);
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
             return;
         }
 
@@ -340,7 +366,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (ev.lengthComputable) {
                         const pct = Math.round((ev.loaded / ev.total) * 100);
                         progressBarFill.style.width = pct + '%';
+<<<<<<< HEAD
                         progressLabel.textContent = `Uploading… ${pct}%`;
+=======
+                        progressLabel.textContent = Uploading… ${pct}%;
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
                     }
                 });
 
@@ -594,7 +624,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const y    = (e.clientY - rect.top)  - size / 2;
             const r    = document.createElement('span');
             r.className = 'ripple-wave';
+<<<<<<< HEAD
             r.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+=======
+            r.style.cssText = width:${size}px;height:${size}px;left:${x}px;top:${y}px;;
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
             el.appendChild(r);
             r.addEventListener('animationend', () => r.remove());
         }
@@ -650,7 +684,11 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = '';
 
         const encoded     = encodeKey(key);
+<<<<<<< HEAD
         const retrievalURL = `${CLIPSHARE_BASE_URL}?c=${encoded}`;
+=======
+        const retrievalURL = ${CLIPSHARE_BASE_URL}?c=${encoded};
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
 
         if (typeof QRCode === 'undefined') {
             container.innerHTML = '<p style="font-size:0.8rem;color:#94a3b8">QR library not loaded.</p>';
@@ -685,7 +723,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const copyBtn      = document.getElementById(copyBtnId);
         const copyMsg      = document.getElementById(copyMsgId);
         const encoded      = encodeKey(key);
+<<<<<<< HEAD
         const retrievalURL = `${CLIPSHARE_BASE_URL}?c=${encoded}`;
+=======
+        const retrievalURL = ${CLIPSHARE_BASE_URL}?c=${encoded};
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
 
         if (downloadBtn) {
             const freshDownload = downloadBtn.cloneNode(true);
@@ -698,12 +740,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (canvas) {
                     const link = document.createElement('a');
+<<<<<<< HEAD
                     link.download = `clipshare-${key}.png`;
+=======
+                    link.download = clipshare-${key}.png;
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
                     link.href     = canvas.toDataURL('image/png');
                     link.click();
                 } else if (img) {
                     const link = document.createElement('a');
+<<<<<<< HEAD
                     link.download = `clipshare-${key}.png`;
+=======
+                    link.download = clipshare-${key}.png;
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
                     link.href     = img.src;
                     link.click();
                 }
@@ -749,4 +799,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })();
 
+<<<<<<< HEAD
 }); 
+=======
+});
+>>>>>>> 7c4ef76796851b4b55d27c5b67081b4c45826200
