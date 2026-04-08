@@ -3,7 +3,7 @@
 header('Content-Type: application/json');
 header('X-Content-Type-Options: nosniff');
 
-// ── Security: POST only ─────────────────────────────────────
+// Security: POST only
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['success' => false, 'error' => 'Method Not Allowed. Use POST.']);
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 require_once __DIR__ . '/config.php';
 
-// ── Allowed file extensions / MIME types ────────────────────
+//Allowed file extensions / MIME types
 define('BLOCKED_EXT', ['php', 'php3', 'php4', 'php5', 'phtml', 'js', 'html', 'htm',
     'exe', 'sh', 'bat', 'cmd', 'py', 'rb', 'pl', 'cgi', 'asp', 'aspx', 'jar', 'msi', 'vbs']);
 
@@ -28,7 +28,7 @@ define('ALLOWED_MIME', [
 define('MAX_FILE_SIZE', 20 * 1024 * 1024); // 20 MB
 define('UPLOAD_DIR', __DIR__ . '/uploads/');
 
-// ── Rate Limiter ────────────────────────────────────────────
+// Rate Limiter
 function isRateLimited(PDO $db, string $ip, string $action): bool
 {
     $windowSec = 60;
@@ -57,7 +57,7 @@ function isRateLimited(PDO $db, string $ip, string $action): bool
         }
 
         if ((int)$row['attempt_count'] >= $maxAttempts) {
-            return true; // Rate limited
+            return true; 
         }
 
         // Increment
@@ -76,7 +76,7 @@ function isRateLimited(PDO $db, string $ip, string $action): bool
     return false;
 }
 
-// ── Unique 7-digit key generator ────────────────────────────
+// Unique 7-digit key generator
 function generateUniqueKey(PDO $db): string
 {
     do {
@@ -87,7 +87,7 @@ function generateUniqueKey(PDO $db): string
     return $key;
 }
 
-// ── Parse expiry ────────────────────────────────────────────
+// Parse expiry
 function parseExpiry(string $expiry): ?string
 {
     $map = [
@@ -101,14 +101,12 @@ function parseExpiry(string $expiry): ?string
     return date('Y-m-d H:i:s', strtotime($map[$expiry]));
 }
 
-// ── Router ───────────────────────────────────────────────────
+// Router
 $action = $_POST['action'] ?? '';
 $ip     = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 $ip     = trim(explode(',', $ip)[0]); // take first IP if behind proxy
 
-// ════════════════════════════════════════════════════════════
 // ACTION: store_text
-// ════════════════════════════════════════════════════════════
 if ($action === 'store_text') {
     if (isRateLimited($db, $ip, 'store')) {
         http_response_code(429);
@@ -143,9 +141,7 @@ if ($action === 'store_text') {
     exit;
 }
 
-// ════════════════════════════════════════════════════════════
 // ACTION: store_file
-// ════════════════════════════════════════════════════════════
 if ($action === 'store_file') {
     if (isRateLimited($db, $ip, 'store')) {
         http_response_code(429);
@@ -217,9 +213,7 @@ if ($action === 'store_file') {
     exit;
 }
 
-// ════════════════════════════════════════════════════════════
 // ACTION: retrieve
-// ════════════════════════════════════════════════════════════
 if ($action === 'retrieve') {
     if (isRateLimited($db, $ip, 'retrieve')) {
         http_response_code(429);
@@ -227,7 +221,7 @@ if ($action === 'retrieve') {
         exit;
     }
 
-    // ── Key extraction ───────────────────────────────────────
+    // Key extraction
     // QR links use ?c=<url-safe-base64> to hide the raw key.
     // The normal retrieve form posts the raw key via POST['key'].
     $key = null;
@@ -326,7 +320,7 @@ if ($action === 'retrieve') {
     exit;
 }
 
-// ── Unknown action ───────────────────────────────────────────
+// Unknown action
 http_response_code(400);
 echo json_encode(['success' => false, 'error' => 'Unknown action.']);
 ?>
